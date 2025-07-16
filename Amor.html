@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nuestra Historia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #d4687e, #b44f67);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    header {
+      font-family: 'Dancing Script', cursive;
+      padding: 50px 20px 30px;
+      font-size: 3.5em;
+      font-weight: bold;
+      color: #fff0f5;
+      text-shadow: 2px 2px 4px #7a1f3d;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      animation: escribir 4s steps(30) forwards;
+      width: 100%;
+    }
+
+    @keyframes escribir {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    .botones {
+      margin: 20px auto 40px;
+    }
+
+    .botones button {
+      background-color: white;
+      color: #d6336c;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .botones button:hover {
+      background-color: #ffe6f0;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 50px 30px;
+      display: none;
+      max-width: 700px;
+      margin: auto;
+      color: white;
+      background-color: rgba(255, 182, 193, 0.15);
+      border-radius: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 1.4em;
+      line-height: 1.6em;
+      text-align: justify;
+    }
+
+    section.visible {
+      display: block;
+    }
+
+    section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .corazon {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
+      background-size: contain;
+      animation: flotar 8s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+
+    .carta {
+      margin: 60px auto;
+      max-width: 600px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 1.3em;
+      line-height: 1.5em;
+      color: white;
+      background: rgba(255, 192, 203, 0.3);
+      padding: 25px 20px 40px;
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .carta button {
+      background-color: #fff;
+      color: #e75480;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .carta button:hover {
+      background-color: #ffd6e8;
+    }
+
+    .mensaje-amor {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .te-amo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      color: #ff4d6d;
+      cursor: pointer;
+      margin-top: 25px;
+      display: inline-block;
+      user-select: none;
+      text-shadow: 1px 1px 2px #b33a4a;
+      transition: transform 0.2s ease;
+    }
+
+    .te-amo:active {
+      transform: scale(1.2);
+    }
+
+    .fotos-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .foto-cuadro {
+      background-color: white;
+      padding: 15px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .foto-cuadro img {
+      width: 100%;
+      border-radius: 15px;
+      display: block;
+    }
+
+    .foto-cuadro:hover {
+      transform: scale(1.05);
+    }
+
+    #mensaje-personalizado {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ff4d6dcc;
+      color: white;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #ff4d6dcc;
+      z-index: 9999;
+      display: none;
+      text-align: center;
+      user-select: none;
+    }
+
+    #mensaje-personalizado button {
+      margin-top: 20px;
+      font-size: 0.6em;
+      padding: 8px 15px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      background: white;
+      color: #ff4d6d;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    #mensaje-personalizado button:hover {
+      background-color: #ffd6e8;
+    }
+  </style>
+</head>
+<body>
+  <header>💕 Nuestra Historia 💕</header>
+
+  <div class="botones">
+    <button onclick="mostrarSeccion('pasado')">📜 Pasado</button>
+    <button onclick="mostrarSeccion('presente')">❤️ Presente</button>
+    <button onclick="mostrarSeccion('futuro')">💍 Futuro</button>
+    <button onclick="mostrarSeccion('fotos')">📸 Fotos</button>
+  </div>
+
+  <section id="pasado" class="visible">
+    <h2>📜 Nuestro Comienzo</h2>
+    <p>
+      Todo empezó gracias a Instagram y tu hermana, ya que conocí a una gran persona.
+      Nos fuimos conociendo poco a poco, perdimos comunicación, pero volvimos a hablar.
+      Tuvimos problemas, pero jamás peleamos, y después de perderte por segunda vez,
+      volviste. Volviste a hacerme feliz. 💫
+    </p>
+  </section>
+
+  <section id="presente">
+    <h2>❤️ Nuestro Hoy</h2>
+    <p>
+      Hoy estamos muy bien: tú me quieres y yo te quiero. Hemos planeado muchas cosas
+      que claro que pasarán. Solo debemos tener paciencia y fe en que nuestro amor
+      superará lo que sea. Juntos. ❤
+    </p>
+  </section>
+
+  <section id="futuro">
+    <h2>💍 Nuestro Mañana</h2>
+    <p>
+      Ya estuviste en mi pasado, eres mi presente y estarás conmigo en el futuro.
+      Nos esperan muchas aventuras, risas, abrazos y caricias.
+      Quiero ser tu novio, casarme contigo, y que tengamos una relación sana, donde,
+      si falta el amor, lo construyamos y estemos bien otra vez. 💍
+    </p>
+  </section>
+
+  <section id="fotos">
+    <h2>📸 Nuestros recuerdos y los que faltan.💌</h2>
+    <div class="fotos-container">
+      <div class="foto-cuadro">
+        <img src="mamita.jpg" alt="Foto juntos 1" />
+      </div>
+      <div class="foto-cuadro">
+        <img src="mamita1.jpg" alt="Foto juntos 2" />
+      </div>
+    </div>
+  </section>
+
+  <div class="carta">
+    <button onclick="mostrarCarta()">💌 Leer una carta especial</button>
+    <div class="mensaje-amor" id="mensaje">
+      <p>
+        Mi amor a la distancia, aunque estemos separados por kilómetros, siento tu abrazo en cada pensamiento.<br />
+        Eres la luz que ilumina mis días y la calma que serena mis noches.<br />
+        Aunque ahora no podamos estar juntos, sé que nuestro amor es más fuerte que la distancia.<br />
+        Cada mensaje, cada llamada, es un suspiro que me acerca un poco más a ti.<br />
+        Sueño con el día en que por fin nos veamos, y en ese momento el mundo entero será nuestro testigo.<br />
+        Hasta entonces, guardo nuestro amor en mi corazón, latiendo con fuerza y esperanza.<br />
+        Te amo con todo mi ser, y sé que nuestro destino es estar juntos, sin importar el tiempo ni la distancia. 💖
+      </p>
+      <p class="te-amo" onclick="corazonesMagicos()">Te amo Mi Amor 💕</p>
+    </div>
+  </div>
+
+  <div id="mensaje-personalizado">
+        <div id="texto-personalizado" style="font-family: 'Dancing Script', cursive; font-size: 1em; line-height: 1.2em; padding: 5px;">
+     Ashley Carolina Martínez Gálvez, eres lo más hermoso que me ha pasado.  
+Gracias por existir en mi vida.  
+¡TE AMO, princesa mía!👑💖  
+Mi consentida, Mi cabeza de ajo🧄, Mi gatita naranja🐱🍊,  
+Mi gran amor💘, Mi corazón de melón 🍉,  
+Mi bebé🐣... Eres TODO para mí.❤️🌹
+    </div>
+    <button onclick="cerrarMensaje()">Cerrar</button>
+  </div>
+
+  <audio autoplay loop hidden>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3" />
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('section');
+      secciones.forEach((sec) => sec.classList.remove('visible'));
+      document.getElementById(id).classList.add('visible');
+    }
+
+    function crearCorazones() {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon');
+      corazon.style.left = Math.random() * 100 + 'vw';
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 8000);
+    }
+    setInterval(crearCorazones, 300);
+
+    function mostrarCarta() {
+      const mensaje = document.getElementById('mensaje');
+      mensaje.style.display = mensaje.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function corazonesMagicos() {
+      for (let i = 0; i < 60; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon');
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.top = Math.random() * 100 + 'vh';
+        corazon.style.width = corazon.style.height = (10 + Math.random() * 25) + 'px';
+        document.body.appendChild(corazon);
+        setTimeout(() => corazon.remove(), 5000);
+      }
+
+      lanzarConfeti();
+      mostrarMensajePersonalizado();
+    }
+
+    function mostrarMensajePersonalizado() {
+      document.getElementById('mensaje-personalizado').style.display = 'block';
+    }
+
+    function cerrarMensaje() {
+      document.getElementById('mensaje-personalizado').style.display = 'none';
+    }
+
+    function lanzarConfeti() {
+      for (let i = 0; i < 100; i++) {
+        const confeti = document.createElement('div');
+        confeti.textContent = i % 2 === 0 ? '🎉' : '💖';
+        confeti.style.position = 'fixed';
+        confeti.style.left = Math.random() * 100 + 'vw';
+        confeti.style.top = '-5vh';
+        confeti.style.fontSize = Math.random() * 20 + 20 + 'px';
+        confeti.style.animation = `caerConfeti ${3 + Math.random() * 3}s linear forwards`;
+        document.body.appendChild(confeti);
+        setTimeout(() => confeti.remove(), 6000);
+      }
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes caerConfeti {
+        to {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuestra Historia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffb6c1;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 60px 20px 30px;
+      font-size: 3em;
+      font-weight: bold;
+    }
+
+    .botones {
+      margin-bottom: 50px;
+    }
+
+    .botones button {
+      background-color: white;
+      color: #d6336c;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .botones button:hover {
+      background-color: #ffe6f0;
+    }
+
+    section {
+      padding: 50px 30px;
+      display: none;
+      max-width: 700px;
+      margin: auto;
+      color: white;
+    }
+
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    section p {
+      font-size: 1.2em;
+    }
+
+    .visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Nuestra Historia</header>
+
+  <div class="botones">
+    <button onclick="mostrarSeccion('pasado')">Pasado</button>
+    <button onclick="mostrarSeccion('presente')">Presente</button>
+    <button onclick="mostrarSeccion('futuro')">Futuro</button>
+  </div>
+
+  <section id="pasado">
+    <h2>Pasado</h2>
+    <p>Todo empezo gracias a Instagram y tu hermana, ya que conoci a una gran persona
+        nos medio fuismos conociendo, perdimos comunicacion pero volvimos a hablar
+        Tuvimos problemas pero jamas peleamos y despues de perderte por segunda vez, volviste,
+        volviste a hacerme feliz.💫</p>
+  </section>
+
+  <section id="presente">
+    <h2>Presente</h2>
+    <p>Hoy estamos muy bien tu me quieres y yo te quiero, hemos planeado muchas cosas
+        claro que pasaran, solo debemos tener paciencia y tener fe que nuestro amor superara lo que 
+        sea juntos❤</p>
+  </section>
+
+  <section id="futuro">
+    <h2>Futuro</h2>
+    <p>Ya estuviste en mi pasasdo, eres mi presente y estaremos juntos en el futuro
+        Nos esperan muchas aventuras, risas, abrazabos y caricias
+        Quiero ser tu novio, casarme contigo, que tengamos una relacion sana donde si falta el
+        amor lo hacemos y estamos bien otra vez.💍</p>
+  </section>
+
+  <script>
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('section');
+      secciones.forEach(sec => sec.classList.remove('visible'));
+      document.getElementById(id).classList.add('visible');
+    }
+  </script>
+
+</body>
+</html>
